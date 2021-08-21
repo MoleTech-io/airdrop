@@ -23,7 +23,7 @@ interface IERC20 {
  
 contract Airdrop is Ownable {
 
-   mapping (address => mapping(address => uint256)) public AirdropMap; //tokenAddr to user to stake amount
+   mapping (address => mapping(address => uint256)) public AirdropMap; 
    
    function getClaimableAmount(address _tokenAddr, address _claimAddr) public view virtual returns (uint256) {
        return AirdropMap[_tokenAddr][_claimAddr]; 
