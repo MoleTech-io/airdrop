@@ -38,9 +38,9 @@ contract Airdrop is Ownable {
         return true;
     }
     
-    function claim(address _tokenAddr) public returns(bool){
+    function claim(address _tokenAddr) public payable returns(bool){
         require(AirdropMap[_tokenAddr][msg.sender] > 0);
-        IERC20(_tokenAddr).transfer(msg.sender, AirdropMap[_tokenAddr][msg.sender]);
+        IERC20(_tokenAddr).transferFrom(owner(), msg.sender, AirdropMap[_tokenAddr][msg.sender]);
         AirdropMap[_tokenAddr][msg.sender] = 0;
         return true;
     }
